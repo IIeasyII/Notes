@@ -1,0 +1,11 @@
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\hibernate.cfg.xml
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\NHibernate.dll
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\NHibernate.pdb
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\Iesi.Collections.dll
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\N.DB.dll
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\N.DB.pdb
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\Iesi.Collections.xml
+C:\ELMA\Notes\Notes\NHibernate\bin\Debug\NHibernate.xml
+C:\ELMA\Notes\Notes\NHibernate\obj\Debug\NHibernate.csprojResolveAssemblyReference.cache
+C:\ELMA\Notes\Notes\NHibernate\obj\Debug\NHibernate.dll
+C:\ELMA\Notes\Notes\NHibernate\obj\Debug\NHibernate.pdb
