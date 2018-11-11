@@ -15,5 +15,14 @@ namespace N.DB.Repository.Interfaces
         /// <param name="name">Логин пользователя</param>
         /// <returns>Пользователя</returns>
         User LoadByLogin(string login);
+
+        /// <summary>
+        /// Зарегистрировать нового пользователя
+        /// </summary>
+        /// <param name="login">Логин пользователя</param>
+        /// <param name="password">Пароль пользователя</param>
+        void RegistryUser(string login, string password);
+
+        long FindIdByLogin(string login);
     }
 }

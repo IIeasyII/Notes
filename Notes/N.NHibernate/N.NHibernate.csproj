@@ -52,6 +52,7 @@
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\NHBaseRepository.cs" />
+    <Compile Include="Repository\NHNoteRepository.cs" />
     <Compile Include="Repository\NHUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

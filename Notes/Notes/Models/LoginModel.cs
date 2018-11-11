@@ -8,10 +8,10 @@ namespace Notes.Models
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введите логин")]
         public string Login { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

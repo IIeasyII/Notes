@@ -13,7 +13,7 @@
     <property name="Flag" />
     <property name="TagList" />
     <property name="Date" />
-    <property name="File" />
+    <property name="File" column="[File]" />
     <many-to-one name="User" column="UserId" lazy="false"/>
 
   </class>

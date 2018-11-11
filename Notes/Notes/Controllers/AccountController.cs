@@ -13,6 +13,8 @@ namespace Notes.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public static long UserId { get; set; }
+
         IUserRepository UserRepository;
 
         public AccountController()
@@ -33,7 +35,6 @@ namespace Notes.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Ошибка сервиса.");
                 return View(model);
             }
 
@@ -46,13 +47,44 @@ namespace Notes.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(user.Login, false);
+            
 
-            return RedirectToAction("Index", "Note");
+            var f = User.Identity.Name;
+
+            return RedirectToAction("ListNotes", "Note");
         }
 
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Registry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Registry(LoginModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = UserRepository.LoadByLogin(model.Login);
+
+            if (user != null)
+            {
+                ModelState.AddModelError("", "Пользователь с таким логином уже зарегистрирован");
+                return View(model);
+            }
+
+            UserRepository.RegistryUser(model.Login, model.Password);
+
             return RedirectToAction("Login", "Account");
         }
     }

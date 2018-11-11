@@ -54,3 +54,10 @@ C:\ELMA\Notes\Notes\Notes\bin\Iesi.Collections.dll
 C:\ELMA\Notes\Notes\Notes\bin\N.NHibernate.pdb
 C:\ELMA\Notes\Notes\Notes\bin\Iesi.Collections.xml
 C:\ELMA\Notes\Notes\Notes\bin\hibernate.cfg.xml
+C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.dll
+C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.SqlServer.dll
+C:\ELMA\Notes\Notes\Notes\bin\Microsoft.AspNet.Identity.Core.dll
+C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.xml
+C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.SqlServer.xml
+C:\ELMA\Notes\Notes\Notes\bin\Microsoft.AspNet.Identity.Core.xml
+C:\ELMA\Notes\Notes\Notes\obj\Debug\Notes.g.resources

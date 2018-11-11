@@ -16,7 +16,7 @@ namespace Notes
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Note", action = "Note", id = UrlParameter.Optional }
+                defaults: new { controller = "Note", action = "MyNotes", id = UrlParameter.Optional }
             );
         }
     }
