@@ -15,13 +15,8 @@ namespace N.NHibernate
         private static readonly ISessionFactory sessionFactory;
 
         static NHibernateHelper()
-        {try
-            {
-                sessionFactory = new Configuration().Configure().BuildSessionFactory();
-            }catch(Exception ex)
-            {
-
-            }
+        {
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
         }
 
         public static ISession GetCurrentSession()

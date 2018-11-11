@@ -10,39 +10,17 @@ namespace N.NHibernate.Repository
 {
     public class NHUserRepository : NHBaseRepository<User>, IUserRepository
     {
-        public override void Delete(long id)
-        {
-            /*var user = Load(id);
-
-            if (user != null)
-            {
-                user.Status = UserStatus.DELETED;
-                Save(user);
-            }*/
-        }
-
-        public void Block(long id)
-        {
-            /*var user = Load(id);
-
-            if (user != null)
-            {
-                user.Status = UserStatus.BLOCKED;
-                Save(user);
-            }*/
-        }
-
-        public User LoadByName(string name)
+        public User LoadByLogin(string login)
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var entity = session.QueryOver<User>().List();/*
-                .And(u => u.Login == name)
+            var user = session.QueryOver<User>()
+                .And(u => u.Login == login)
                 .SingleOrDefault();
-                */
+
             NHibernateHelper.CloseSession();
 
-            return null;
+            return user;
         }
     }
 }

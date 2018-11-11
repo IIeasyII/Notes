@@ -33,13 +33,13 @@ namespace Notes.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Что-то пошло не так! 😊");
+                ModelState.AddModelError("", "Ошибка сервиса.");
                 return View(model);
             }
 
-            var user = UserRepository.LoadByName(model.Login);
+            var user = UserRepository.LoadByLogin(model.Login);
 
-            if (user == null)
+            if (user == null || user.Password != model.Password)
             {
                 ModelState.AddModelError("", "Неверный логин или пароль");
                 return View(model);
@@ -47,7 +47,7 @@ namespace Notes.Controllers
 
             FormsAuthentication.SetAuthCookie(user.Login, false);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Note");
         }
 
         public ActionResult Logoff()

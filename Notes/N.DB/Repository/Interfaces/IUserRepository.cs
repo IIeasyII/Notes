@@ -10,16 +10,10 @@ namespace N.DB.Repository.Interfaces
     public interface IUserRepository : IEntityRepository<User>
     {
         /// <summary>
-        /// Найти пользователя по имени
+        /// Найти пользователя по логину
         /// </summary>
-        /// <param name="name">Имя или login</param>
-        /// <returns></returns>
-        User LoadByName(string name);
-
-        /// <summary>
-        /// Заблокировать пользователя
-        /// </summary>
-        /// <param name="id">Идентификатор</param>
-        void Block(long id);
+        /// <param name="name">Логин пользователя</param>
+        /// <returns>Пользователя</returns>
+        User LoadByLogin(string login);
     }
 }
