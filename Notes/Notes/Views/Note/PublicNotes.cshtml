@@ -1,0 +1,55 @@
+﻿@model IEnumerable<N.DB.Models.Note>
+
+<h2>Список всех заметок</h2>
+
+<table class="table" id="grid">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TagList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        var name = item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name;
+                    }
+                    @Html.DisplayFor(modelItem => name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Login)
+                </td>
+                <td>
+                    <button type="button" onclick=""><img src="~/App_LocalResources/download.jpg" style="vertical-align: middle"></button>
+                    @*@Html.DisplayFor(modelItem => item.File)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TagList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Note", new N.DB.Models.Note() { Id = item.Id, Content = item.Content, File = item.File, Flag = item.Flag, Name = item.Name, TagList = item.TagList })
+                </td>
+            </tr>
+        }
+
+</table>
+

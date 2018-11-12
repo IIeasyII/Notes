@@ -55,7 +55,7 @@ namespace N.NHibernate.Repository
             ISession session = NHibernateHelper.GetCurrentSession();
 
             var user = session.Load<T>(id);
-
+            
             NHibernateHelper.CloseSession();
 
             return user;

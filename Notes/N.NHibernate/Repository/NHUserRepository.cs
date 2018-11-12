@@ -45,16 +45,6 @@ namespace N.NHibernate.Repository
                 .SetString("Password", password)
                 .SetInt32("RoleId", 2)
                 .ExecuteUpdate();
-            
-            /* Альтернативный вариант
-            var user = new User()
-            {
-                Login = login,
-                Password = password,
-                Role = new Role() { Id = 2 }
-            };
-
-            session.Save(user);*/
 
             NHibernateHelper.CloseSession();
         }

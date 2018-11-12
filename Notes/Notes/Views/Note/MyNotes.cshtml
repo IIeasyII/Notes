@@ -1,55 +1,60 @@
 ﻿@model IEnumerable<N.DB.Models.Note>
 
-<h2>Список моих заметок</h2>
+<h1 style="color: black; font-size: 25pt">Список моих заметок</h1>
 
-<p>
-    @Html.ActionLink("Новая заметка", "Input", "Calc")
-</p>
+@Html.ActionLink("New note", "NewNote", "Note", new { @style = "text-decoration: none; font-size: 20pt" })
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Flag)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TagList)
-        </th>   
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.File)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@using (Html.BeginForm())
+{
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
             <th>
-                <input type="checkbox" onclick="" id="@item.Id" checked="@item.Flag" />
+                @Html.ActionLink("Name", "Sort", new { Column = "Name" }, new { @style = "text-decoration: none; color: black; font-weight: bold" })
             </th>
             <th>
-                @Html.DisplayFor(modelItem => item.TagList)
-            </th>  
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                <button type="button" onclick=""><img src="~/App_LocalResources/download.jpg" style="vertical-align: middle"></button>
-                    @*@Html.DisplayFor(modelItem => item.File)*@
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+                @Html.ActionLink("IsPublic", "Sort", new { Column = "Flag" }, new { @style = "text-decoration: none; color: black; font-weight: bold" })
+            </th>
+            <th>
+                @Html.ActionLink("Tags", "Sort", new { Column = "Name" }, new { @style = "text-decoration: none; color: black; font-weight: bold" })
+            </th>
+            <th>
+                @Html.ActionLink("Date", "Sort", new { Column = "Name" }, new { @style = "text-decoration: none; color: black; font-weight: bold" })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            @Html.HiddenFor(modelItem => item.Id)
+            @Html.HiddenFor(modelItem => item.User)
+            @Html.HiddenFor(modelItem => item.Content)
+
+            <tr>
+                <td>
+                    @{
+                        var name = item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name;
+                    }
+                    @Html.DisplayFor(modelItem => name)
+                </td>
+                <td>
+                    <input type="checkbox" onclick="" id="@item.Id" checked="@item.Flag" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TagList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    <img onclick="" src="~/Content/download.png" alt="Download" height="26" width="26"/>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Note", new N.DB.Models.Note() { Id = item.Id, Content = item.Content, File = item.File, Flag = item.Flag, Name = item.Name, TagList = item.TagList }) |
+                    @Html.ActionLink("Delite", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+}

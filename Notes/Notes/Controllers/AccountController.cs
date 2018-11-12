@@ -21,8 +21,7 @@ namespace Notes.Controllers
         {
             UserRepository = new NHUserRepository();
         }
-
-        // GET: Account
+        
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -34,29 +33,26 @@ namespace Notes.Controllers
         public ActionResult Login(LoginModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
             var user = UserRepository.LoadByLogin(model.Login);
 
             if (user == null || user.Password != model.Password)
             {
                 ModelState.AddModelError("", "Неверный логин или пароль");
+
                 return View(model);
             }
 
             FormsAuthentication.SetAuthCookie(user.Login, false);
-            
 
-            var f = User.Identity.Name;
-
-            return RedirectToAction("ListNotes", "Note");
+            return RedirectToAction("MyNotes", "Note");
         }
-
+        
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();
+
             return RedirectToAction("Login", "Account");
         }
 
@@ -80,6 +76,7 @@ namespace Notes.Controllers
             if (user != null)
             {
                 ModelState.AddModelError("", "Пользователь с таким логином уже зарегистрирован");
+
                 return View(model);
             }
 

@@ -60,4 +60,3 @@ C:\ELMA\Notes\Notes\Notes\bin\Microsoft.AspNet.Identity.Core.dll
 C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.xml
 C:\ELMA\Notes\Notes\Notes\bin\EntityFramework.SqlServer.xml
 C:\ELMA\Notes\Notes\Notes\bin\Microsoft.AspNet.Identity.Core.xml
-C:\ELMA\Notes\Notes\Notes\obj\Debug\Notes.g.resources

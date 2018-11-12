@@ -146,7 +146,8 @@
     <Content Include="App_Data\NotesDB_log.ldf">
       <DependentUpon>NotesDB.mdf</DependentUpon>
     </Content>
-    <Resource Include="App_LocalResources\download.jpg" />
+    <Content Include="Content\download.png" />
+    <Content Include="Views\Note\Note.cshtml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -182,7 +183,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Registry.cshtml" />
-    <Content Include="Views\Note\ListNotes.cshtml" />
+    <Content Include="Views\Note\PublicNotes.cshtml" />
     <Content Include="Views\Note\MyNotes.cshtml" />
   </ItemGroup>
   <ItemGroup />

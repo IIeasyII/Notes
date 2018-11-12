@@ -16,5 +16,7 @@ namespace N.DB.Repository.Interfaces
         IList<Note> GetAllListNotesPublic(long userId);
 
         IList<Note> GetAllListMyNotes(long userId);
+
+        Note GetNoteById(long Id);
     }
 }
