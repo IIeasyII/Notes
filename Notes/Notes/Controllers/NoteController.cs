@@ -65,13 +65,6 @@ namespace Notes.Controllers
             return View("Note");
         }
 
-
-        public ActionResult Sort(IEnumerable<Note> models)
-        {
-
-            return RedirectToAction("MyNotes");
-        }
-
         [HttpPost]
         public ActionResult SaveNewNote(Note model)
         {
@@ -107,7 +100,7 @@ namespace Notes.Controllers
         
         public ActionResult Delete(long id)
         {
-            NoteRepository.DeleteNote(id);
+            NoteRepository.Delete(id);
 
             return RedirectToAction("MyNotes");
 

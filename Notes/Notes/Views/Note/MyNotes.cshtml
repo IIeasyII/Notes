@@ -1,10 +1,20 @@
 ﻿@model IEnumerable<N.DB.Models.Note>
 
-<h1 style="color: black; font-size: 25pt">Список моих заметок</h1>
+<div style="margin-top: 1.5%;">
+    <h1 style="color: black; font-size: 25pt; display: inline;">My notes</h1>
 
-@Html.ActionLink("New note", "NewNote", "Note", new { @style = "text-decoration: none; font-size: 20pt" })
+    @Html.ActionLink("New note", "NewNote", "Note", new { @style = "text-decoration: none; font-size: 20pt; display: inline; margin-left: 2.3%;" })
+</div>
 
-<table class="table" align="center" style="margin-top: 1%;">
+<table id="rez_tablh" style="margin-top: 1.5%;">
+    <tr>
+        <th id="thnaim"><input type="text" placeholder="Serch by name..."></th>
+    </tr>
+</table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<table class="table" id="rez_tab" align="center" style="margin-top: 1%;">
     <thead>
         <tr>
             <td style="font-weight: bold;">Name</td>
@@ -17,7 +27,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td id="naim">
                     @{
                         var name = item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name;
                     }
@@ -195,4 +205,22 @@ if (root){
     else if (root.attachEvent) root.attachEvent("onload", init);
 }
 //-->
+</script>
+
+<script>
+    $("#rez_tablh input").on("keyup", function () {
+        var filterN = $("#thnaim input").val(),
+            filterI = $("#thinv input").val();
+
+        $("#rez_tab tr").each(function () {
+            var n = $(this).find('#naim').text(),
+                i = $(this).find('#inv').text();
+            if (n.search(new RegExp(filterN, "i")) < 0 ||
+                i.search(new RegExp(filterI, "i")) < 0) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
 </script>
