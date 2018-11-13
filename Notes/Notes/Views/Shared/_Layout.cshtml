@@ -22,14 +22,12 @@
                 @Html.ActionLink("Public notes", "PublicNotes", "Note", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("My notes", "MyNotes", "Note", new { @class = "navbar-brand" })
             </div>
-
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a>@User.Identity.Name</a> </li>
                         <li>@Html.ActionLink("Log Out", "Logoff", "Account")</li>
                     </ul>
                 </div>
-            
         </div>
     </div>
 }

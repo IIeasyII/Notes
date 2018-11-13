@@ -1,6 +1,7 @@
 ﻿using N.DB.Models.Interfaces;
 using N.DB.Repository.Interfaces;
 using NHibernate;
+using NHibernate.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,23 +21,17 @@ namespace N.NHibernate.Repository
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            try
+            using (session.BeginTransaction())
             {
-                using (var tx = session.BeginTransaction())
-                {
-                    var entity = Load(id);
+                var entity = Load(id);
 
-                    if (entity != null)
-                    {
-                        session.Delete(entity);
-                        tx.Commit();
-                    }
+                if (entity != null)
+                {
+                    session.Delete(entity);
                 }
+                session.Flush();
             }
-            finally
-            {
-                NHibernateHelper.CloseSession();
-            }
+
         }
 
         public virtual IEnumerable<T> GetAll()
@@ -54,28 +49,21 @@ namespace N.NHibernate.Repository
         {
             ISession session = NHibernateHelper.GetCurrentSession();
 
-            var user = session.Load<T>(id);
-            
-            NHibernateHelper.CloseSession();
+            using (session.BeginTransaction())
+            {
+                var user = session.Load<T>(id);
 
-            return user;
+                return user;
+            }
         }
 
         public virtual void Save(T entity)
         {
             ISession session = NHibernateHelper.GetCurrentSession();
 
-            try
+            using (session.BeginTransaction())
             {
-                using (var tx = session.BeginTransaction())
-                {
-                    session.SaveOrUpdate(entity);
-                    tx.Commit();
-                }
-            }
-            finally
-            {
-                NHibernateHelper.CloseSession();
+                session.SaveOrUpdate(entity);
             }
         }
     }

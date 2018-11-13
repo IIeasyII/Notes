@@ -185,6 +185,7 @@
     <Content Include="Views\Account\Registry.cshtml" />
     <Content Include="Views\Note\PublicNotes.cshtml" />
     <Content Include="Views\Note\MyNotes.cshtml" />
+    <Content Include="Views\Note\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

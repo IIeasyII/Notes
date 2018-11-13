@@ -18,5 +18,7 @@ namespace N.DB.Repository.Interfaces
         IList<Note> GetAllListMyNotes(long userId);
 
         Note GetNoteById(long Id);
+
+        void DeleteNote(long id);
     }
 }

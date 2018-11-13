@@ -14,39 +14,41 @@ namespace N.NHibernate.Repository
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var user = session.QueryOver<User>()
+            using (session.BeginTransaction())
+            {
+                var user = session.QueryOver<User>()
                 .And(u => u.Login == login)
                 .SingleOrDefault();
 
-            NHibernateHelper.CloseSession();
-
-            return user.Id;
+                return user.Id;
+            }
         }
 
         public User LoadByLogin(string login)
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var user = session.QueryOver<User>()
+            using (session.BeginTransaction())
+            {
+                var user = session.QueryOver<User>()
                 .And(u => u.Login == login)
                 .SingleOrDefault();
 
-            NHibernateHelper.CloseSession();
-
-            return user;
+                return user;
+            }
         }
 
         public void RegistryUser(string login, string password)
         {
             var session = NHibernateHelper.GetCurrentSession();
-
-            session.CreateSQLQuery("INSERT INTO [User] ([Login], [Password], [RoleId]) VALUES (:Login, :Password, :RoleId)")
+            using (session.BeginTransaction())
+            {
+                session.CreateSQLQuery("INSERT INTO [User] ([Login], [Password], [RoleId]) VALUES (:Login, :Password, :RoleId)")
                 .SetString("Login", login)
                 .SetString("Password", password)
                 .SetInt32("RoleId", 2)
                 .ExecuteUpdate();
-
-            NHibernateHelper.CloseSession();
+            }
         }
     }
 }

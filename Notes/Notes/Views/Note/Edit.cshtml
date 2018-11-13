@@ -1,0 +1,36 @@
+﻿@model N.DB.Models.Note
+
+@using (Html.BeginForm("Save", "Note", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Name)
+    @Html.HiddenFor(model => model.TagList)
+    @Html.HiddenFor(model => model.User)
+    @Html.HiddenFor(model => model.File)
+
+
+    @*@Html.EditorFor(model => model.Flag, new { @class = "[ form-group ]" })*@
+
+    <div class="[ form-group ]" style="margin-top: 1%;">
+
+        @Html.CheckBoxFor(model => model.Flag, new { name = "fancy-checkbox-info", id = "fancy-checkbox-info"})
+        <div class="[ btn-group ]" >
+            <label for="fancy-checkbox-info" class="[ btn btn-info ]">
+                <span class="[ glyphicon glyphicon-ok ]" id="CheckBox"></span>
+                <span> </span>
+            </label>
+            <label for="fancy-checkbox-info" class="[ btn btn-default active ]">
+                Post this notes
+            </label>
+        </div>
+    </div>
+    
+    @Html.TextAreaFor(model => model.Content, new { rows = "18", style = "width:100%; max-width:100%; margin-top: 1%", placeholder = Html.DisplayNameFor(m => m.Content), @class = "form-control input-lg textarea-editor" })
+
+    @*@Html.ActionLink("Save", "Save", new { Model })*@
+
+    @*<input type="submit" value="Save" class="btn btn-default" />*@
+
+    <input type="submit" value="Save" style="margin-left: 0%; margin-top: 0.5%;"/>
+}
+

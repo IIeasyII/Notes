@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using System.Web.Security;
 using Notes.Models;
 using N.DB.Models;
+using System.IO;
 
 namespace Notes.Controllers
 {
@@ -61,25 +62,61 @@ namespace Notes.Controllers
         [HttpGet]
         public ActionResult NewNote()
         {
-            return View("Note", new N.DB.Models.Note());
+            return View("Note");
+        }
+
+
+        public ActionResult Sort(IEnumerable<Note> models)
+        {
+
+            return RedirectToAction("MyNotes");
         }
 
         [HttpPost]
-        public PartialViewResult SaveNote(Note model)
+        public ActionResult SaveNewNote(Note model)
         {
-            model.Id = NoteId;
+            //if (Request.Files.Count > 0)
+            //{
+            //    var file = Request.Files[0];
+
+            //    if (file != null && file.ContentLength > 0)
+            //    {
+            //        var fileName = Path.GetFileName(file.FileName);
+            //        var path = Path.Combine(Server.MapPath("~/Resourse/"), fileName);
+            //    }
+            //}
+
             model.User = new User() { Id = UserId };
 
             NoteRepository.Save(model);
 
-            return PartialView();
-            
+            return RedirectToAction("Note", model);
+
+        }
+
+        [HttpPost]
+        public ActionResult Save(Note model)
+        {
+            model.User = new User() { Id = UserId };
+
+            NoteRepository.Save(model);
+
+            return RedirectToAction("Edit", model);
+
         }
         
         public ActionResult Delete(long id)
         {
-            //NoteRepository.Delete(id);
+            NoteRepository.DeleteNote(id);
+
             return RedirectToAction("MyNotes");
+
+        }
+
+        [HttpGet]
+        public ActionResult Edit(Note model)
+        {
+            return View("Edit", model);
 
         }
 

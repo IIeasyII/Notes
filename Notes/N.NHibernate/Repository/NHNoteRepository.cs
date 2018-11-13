@@ -23,46 +23,67 @@ namespace N.NHibernate.Repository
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var note = session.QueryOver<Note>()
-                .And(u => u.Id == Id)
-                .SingleOrDefault();
+            using (session.BeginTransaction())
+            {
+                using (session.BeginTransaction())
+                {
+                    var note = session.QueryOver<Note>()
+                        .And(u => u.Id == Id)
+                        .SingleOrDefault();
 
-            NHibernateHelper.CloseSession();
-            
-            return note;
+                    return note;
+                }
+            }
         }
 
         public IList<Note> GetAllListNotesPublic(long userId)
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var notes = session.QueryOver<Note>()
+            using (session.BeginTransaction())
+            {
+                var notes = session.QueryOver<Note>()
                 .And(u => u.User.Id != userId)
                 .And(u => u.Flag == true)
                 .List();
 
-            NHibernateHelper.CloseSession();
-
-            return notes;
+                return notes;
+            }
         }
 
         public IList<Note> GetAllListMyNotes(long userId)
         {
             var session = NHibernateHelper.GetCurrentSession();
 
-            var notes = session.QueryOver<Note>()
+            using (session.BeginTransaction())
+            {
+                var notes = session.QueryOver<Note>()
                 .And(u => u.User.Id == userId)
                 .List();
 
-            NHibernateHelper.CloseSession();
-
-            return notes;
+                return notes;
+            }
         }
 
         public void Save(Note entity)
         {
             var session = NHibernateHelper.GetCurrentSession();
-            
+
+            using (session.BeginTransaction())
+            {
+                var user = UserRepository.Load(entity.User.Id);
+
+                entity.User = user;
+                entity.Date = DateTime.Now;
+
+                if (entity != null)
+                {
+                    session.SaveOrUpdate(entity);
+                }
+
+                session.Flush();
+            }/*
+
             if (entity.Id > 0)
             {
                 session.CreateSQLQuery("UPDATE [Note] SET [Name] = :Name, [Content] = :Content, [Flag] = :Flag, [TagList] = :TagList, [Date] = :Date, [UserId] = :UserId, [File] = :File WHERE [Id] = :Id")
@@ -89,7 +110,24 @@ namespace N.NHibernate.Repository
                     .ExecuteUpdate();
             }
 
-            NHibernateHelper.CloseSession();
+            NHibernateHelper.CloseSession();*/
+        }
+
+        public void DeleteNote(long id)
+        {
+            var session = NHibernateHelper.GetCurrentSession();
+
+            using (session.BeginTransaction())
+            {
+                var entity = GetNoteById(id);
+
+                if (entity != null)
+                {
+                    session.Delete(entity);
+                }
+
+                session.Flush();
+            }
         }
 
         Note IEntityRepository<Note>.Create()
