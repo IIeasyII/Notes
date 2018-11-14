@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="N.DB.Models" assembly="N.DB">
+
+  <class name="Note" table="[Note]">
+
+    <id name="Id">
+      <generator class="native" />
+    </id>
+
+    <property name="Name" />
+    <property name="Content" />
+    <property name="Flag" />
+    <property name="TagList" />
+    <property name="Date" />
+    <property name="File" column="[File]" />
+    <many-to-one name="User" column="UserId" lazy="false"/>
+
+  </class>
+
+</hibernate-mapping>

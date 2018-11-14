@@ -1,0 +1,5 @@
+C:\ELMA\Notes\Notes\N.DB\bin\Debug\N.DB.dll
+C:\ELMA\Notes\Notes\N.DB\bin\Debug\N.DB.pdb
+C:\ELMA\Notes\Notes\N.DB\obj\Debug\N.DB.dll
+C:\ELMA\Notes\Notes\N.DB\obj\Debug\N.DB.pdb
+C:\ELMA\Notes\Notes\N.DB\obj\Debug\N.DB.csprojResolveAssemblyReference.cache

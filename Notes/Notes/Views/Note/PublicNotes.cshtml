@@ -1,0 +1,49 @@
+﻿@model IEnumerable<N.DB.Models.Note>
+
+<h1 style="color: black; font-size: 25pt; display: inline;">Public notes</h1>
+
+<table id="rez_tablh" style="margin-top: 1.5%;">
+    <tr>
+        <th id="thnaim"><input type="text" placeholder="Serch by name..."></th>
+    </tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<table class="table" id="rez_tab" align="center" style="margin-top: 1%;">
+    <thead>
+        <tr>
+            <td style="font-weight: bold;">Name</td>
+            <td style="font-weight: bold;">User</td>
+            <td style="font-weight: bold;">TagList</td>
+            <td style="font-weight: bold;">Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td id="naim">
+                    @{
+                        var name = item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name;
+                    }
+                    @Html.DisplayFor(modelItem => name)
+                </td>
+                <td id="naim">
+                    @Html.DisplayFor(modelItem => item.User.Login)
+                </td>
+                <td id="naim">
+                    @Html.DisplayFor(modelItem => item.TagList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    <img onclick="location.href='@Url.Action("GetFile", "Note", new { nameFile = item.File })'" src="~/Content/download.png" alt="Download" height="26" width="26" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new N.DB.Models.Note() { Id = item.Id, Content = item.Content, File = item.File, Flag = item.Flag, Name = item.Name, TagList = item.TagList })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

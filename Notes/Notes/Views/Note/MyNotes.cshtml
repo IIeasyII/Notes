@@ -1,0 +1,54 @@
+﻿@model IEnumerable<N.DB.Models.Note>
+
+<div style="margin-top: 1.5%;">
+    <h1 style="color: black; font-size: 25pt; display: inline;">My notes</h1>
+
+    @Html.ActionLink("New note", "NewNote", "Note", new { @style = "text-decoration: none; font-size: 20pt; display: inline; margin-left: 2.3%;" })
+</div>
+
+<table id="rez_tablh" style="margin-top: 1.5%;">
+    <tr>
+        <th id="thnaim"><input type="text" placeholder="Serch by name or tags..."></th>
+    </tr>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<table class="table" id="rez_tab" align="center" style="margin-top: 1%;">
+    <thead>
+        <tr>
+            <td style="font-weight: bold;">Name</td>
+            <td style="font-weight: bold;">IsPublic</td>
+            <td style="font-weight: bold;">Tags</td>
+            <td style="font-weight: bold;">Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td id="naim">
+                    @{
+                        var name = item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name;
+                    }
+                    @Html.DisplayFor(modelItem => name)
+                </td>
+                <td>
+                    <input type="checkbox" checked="@item.Flag" onclick="return false;" />
+                </td>
+                <td id="naim">
+                    @Html.DisplayFor(modelItem => item.TagList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    <img onclick="location.href='@Url.Action("GetFile", "Note", new { nameFile = item.File })'" src="~/Content/download.png" alt="Download" height="26" width="26" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new N.DB.Models.Note() { Id = item.Id, Content = item.Content, File = item.File, Flag = item.Flag, Name = item.Name, TagList = item.TagList }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+﻿@model N.DB.Models.Note
+
+@using (Html.BeginForm("SaveNewNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    @Html.AntiForgeryToken()
+
+    <div class="horisont">
+
+        @*Name*@
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Name", style = "background-color: #ffffff; margin-left: 0%" } })
+        @Html.ValidationMessageFor(model => model.Name, null, new { style = "color: red;" })
+
+        @*Checkbox*@
+        <div class="[ form-group ]" style="margin-left: 1%; display: inline;">
+
+            @Html.CheckBoxFor(model => model.Flag, new { name = "fancy-checkbox-info", id = "fancy-checkbox-info", style = "display: none;" })
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-info" class="[ btn btn-info ]" id="image">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-info" class="[ btn btn-default active ]" onclick="checkBox()">
+                    Post this notes
+                </label>
+            </div>
+        </div>
+
+        <input type="file" name="upload" style="display: inline; margin-left: 1%;">
+
+    </div>
+
+    @Html.TextAreaFor(model => model.Content, new { rows = "15", style = "width:100%; max-width:100%; margin-top: 0.5%", placeholder = Html.DisplayNameFor(m => m.Content), @class = "form-control input-lg textarea-editor" })
+
+    @Html.TextAreaFor(model => model.TagList, new { style = "width:100%; max-width:100%; margin-top: 0.5%", placeholder = Html.DisplayNameFor(m => m.TagList), @class = "form-control input-lg textarea-editor" })
+
+    <input type="submit" value="Save" style="margin-left: 0%; margin-top: 0.5%" />
+}
+
+<script>
+    $(document).ready(function () {
+        var check_box = document.getElementById("fancy-checkbox-info")
+
+        if (check_box.checked == true) {
+            document.getElementById("image").style.display = "normal";
+        } else {
+            document.getElementById("image").style.display = "none";
+        }
+    });
+
+    function checkBox() {
+
+        var check_box = document.getElementById("fancy-checkbox-info")
+
+        if (check_box.checked == false) {
+            document.getElementById("image").style.display = 'block';
+        }
+        if (check_box.checked == true) {
+            document.getElementById("image").style.display = 'none';
+        }
+    }
+</script>
