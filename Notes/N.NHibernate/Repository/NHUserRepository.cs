@@ -1,15 +1,15 @@
 ﻿using N.DB.Models;
 using N.DB.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace N.NHibernate.Repository
 {
     public class NHUserRepository : NHBaseRepository<User>, IUserRepository
     {
+        /// <summary>
+        /// Find di user by login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>User</returns>
         public long FindIdByLogin(string login)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -24,6 +24,11 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Find user by login
+        /// </summary>
+        /// <param name="login">Login</param>
+        /// <returns>User</returns>
         public User LoadByLogin(string login)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -38,6 +43,11 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Registry user by login and password as just user
+        /// </summary>
+        /// <param name="login">Login</param>
+        /// <param name="password">Password</param>
         public void RegistryUser(string login, string password)
         {
             var session = NHibernateHelper.GetCurrentSession();

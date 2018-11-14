@@ -1,28 +1,28 @@
 ﻿using N.DB.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace N.DB.Repository.Interfaces
 {
     public interface IUserRepository : IEntityRepository<User>
     {
         /// <summary>
-        /// Найти пользователя по логину
+        /// Find user by login
         /// </summary>
-        /// <param name="name">Логин пользователя</param>
-        /// <returns>Пользователя</returns>
+        /// <param name="name">Login</param>
+        /// <returns>User</returns>
         User LoadByLogin(string login);
 
         /// <summary>
-        /// Зарегистрировать нового пользователя
+        /// Registry new user
         /// </summary>
-        /// <param name="login">Логин пользователя</param>
-        /// <param name="password">Пароль пользователя</param>
+        /// <param name="login">Login</param>
+        /// <param name="password">Password</param>
         void RegistryUser(string login, string password);
 
+        /// <summary>
+        /// Find user id login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         long FindIdByLogin(string login);
     }
 }

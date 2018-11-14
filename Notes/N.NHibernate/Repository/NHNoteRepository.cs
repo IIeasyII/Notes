@@ -2,9 +2,6 @@
 using N.DB.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace N.NHibernate.Repository
 {
@@ -17,6 +14,11 @@ namespace N.NHibernate.Repository
             UserRepository = new NHUserRepository();
         }
 
+        /// <summary>
+        /// Get note by id
+        /// </summary>
+        /// <param name="Id">Note id</param>
+        /// <returns>Note object</returns>
         public Note GetNoteById(long Id)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -34,6 +36,11 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Get list public notes without my notes
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>List notes</returns>
         public IList<Note> GetAllListNotesPublic(long userId)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -49,6 +56,11 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Get my notes by user id
+        /// </summary>
+        /// <param name="userId">User id</param>
+        /// <returns>List notes</returns>
         public IList<Note> GetAllListMyNotes(long userId)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -63,6 +75,10 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Save or update note
+        /// </summary>
+        /// <param name="entity">Note model</param>
         public void Save(Note entity)
         {
             var session = NHibernateHelper.GetCurrentSession();
@@ -83,6 +99,10 @@ namespace N.NHibernate.Repository
             }
         }
 
+        /// <summary>
+        /// Delete note by id
+        /// </summary>
+        /// <param name="id">Note id</param>
         public override void Delete(long id)
         {
             var session = NHibernateHelper.GetCurrentSession();

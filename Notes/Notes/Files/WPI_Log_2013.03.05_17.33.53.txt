@@ -1,0 +1,159 @@
+Лог файл установки WPI
+
+Процесс установки начат в: 5 марта 2013 г. 17:33:53
+
+Информация о WPI:
+   Версия=7.7.0
+   Версия Internet Explorer=9.1
+   Соединение с интернетом=false
+
+Операционная система
+   Операционная система=Not found
+   ИД издания=Not found
+   Пакет поправок (Service Pack)=0
+
+Архитектура
+   Наименование архитектуры=GenuineIntel
+   Строка наименования архитектуры=Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz
+   ИД архитектуры=Intel64 Family 6 Model 58 Stepping 9
+   Число процессоров=4
+   Мгц=2494
+   Тип архитектуры=AMD64
+   SysArch6432=NOT_DEFINED
+   Биты архитектуры=64
+   Истинные 64 биты=true
+
+   Файл настроек=D:\\WPIScripts\useroptions.js
+   Файл конфигурации=D:\\WPIScripts\config.js
+
+   // Window tab
+   Resolution=1024
+   MainWindowWidth=800
+   MainWindowHeight=600
+   MainWindowX=-1
+   MainWindowY=-1
+   InstallerWindowX=25
+   InstallerWindowY=25
+
+   // Interface tab
+   ShowToolTips=true
+   UseTransitions=false
+   IndentText=true
+
+   // Style tab
+   Theme='Windows'
+   BgPicture=''
+
+   // General tab
+   Configurations=['']
+   ShowMultiDefault=true
+   CheckOnLoad='default'
+   NumCols=3
+   // ---
+   SortOrder=['Системные,Мультимедия,Офисные,Видео,Интернет,CD-DVD,Утилиты,Профи,Украшаения,Аудио,Настройка системы,Графика,Безопасность']
+   // ---
+   Timer=false
+   Seconds=60
+   StartBeepAtSecs=10
+   // ---
+   ShowExtraButtons=false
+   DoNotShowIfCD=true
+   USSFSilentMode=false
+   VerifyInstallHDD=false
+   AllowCheckForInternet=false
+   LoadDesktopBeforeInstall=false
+   ReOpenAfterInstall=false
+   DisableCatCheckBoxes=false
+   SortWithinCats=false
+   DisableOnDepsNotMet=true
+   AlwaysUseScrollBar=true
+   DontSplitCats=true
+   InstallByCategory=true
+   ReallyForce=false
+   DisableIfDoGray=false
+   InstallFonts=false
+   ShowCommandInInstaller=true
+   // ---
+   DefaultInstallPath='default'
+   CustomInstallPath=['']
+   // ---
+   Language='ru'
+
+   // Audio tab
+   PlayAudioInInstaller=false
+   InstallAudio=['']
+   Volume=75
+   Shuffle=false
+   CopyAudioFolder=false
+   CopyAudioPath=['%systemdrive%\WPI_Audio']
+   DeleteAudioFolder=false
+
+   // Tools tab
+   MonitorResolution=0
+   MonitorDepth=0
+   MonitorRefresh=0
+   // ---
+   ExecuteBeforeEnabled=false
+   ExecuteBeforebit4=false
+   ExecuteBefore=['']
+   ExecuteAfterEnabled=false
+   ExecuteAfterbit64=false
+   ExecuteAfter=['']
+   // ---
+   RestartComputer=false
+   RestartType=0
+   RestartSeconds=30
+   DoNotLoadDesktop=true
+   // ---
+   LogInstallation=true
+   LogPath=['%systemdrive%\WPI_Log.txt'];
+   TimeStampLogFile=true
+
+   // Sounds tab
+   SndWPIStartCB=false
+   SndWPIStart=['"%wpipath%\Audio\SoundsScheme\Alert.wav"'];
+   SndInstallStartCB=false
+   SndInstallStart=['"%wpipath%\Audio\SoundsScheme\AtBeginning.wav"'];
+   SndInstallSuccessCB=false
+   SndInstallSuccess=['"%wpipath%\Audio\SoundsScheme\Yes.wav"'];
+   SndInstallFailCB=false
+   SndInstallFail=['"%wpipath%\Audio\SoundsScheme\No.wav"'];
+   SndInstallFinishCB=false
+   SndInstallFinish=['"%wpipath%\Audio\SoundsScheme\AtEnd.wav"'];
+
+Глобальные переменные:
+   %OSLANG%=RUS
+   %WPIPATH%=D:\
+   %ROOT%=
+   %CDROM%=D:
+   %DOSPATH%=
+   %SYSTEMDRIVE%=C:
+   %WINDIR%=C:\Windows
+   %PROGRAMFILES%=C:\Program Files
+   %TEMP%=C:\Users\CD86~1\AppData\Local\Temp
+   %SYSDIR%=C:\Windows\System32
+   %ALLUSERSPROFILE%=C:\ProgramData
+   %USERPROFILE%=C:\Users\Алексей
+   %APPDATA%=C:\Users\Алексей\AppData\Roaming
+   %COMMONPROGRAMFILES%=C:\Program Files\Common Files
+
+Список программ, которые будут установлены:
+   Daemon Tools Lite 4.3.56 RUS
+
+1 Пункты, 1 Комманды
+
+-----
+
+5 марта 2013 г. 17:33:55
+   Программа: Daemon Tools Lite 4.3.56 RUS
+   Идентификатор: DAEMONTOOLSLITE4356RUS
+   Порядок: 900019
+   Категория: CD-DVD
+   5 марта 2013 г. 17:34:07 - cmd1 Успех (возвращен код 0): "D:\\Install\DTLite4356-0091.exe" /S
+   5 марта 2013 г. 17:34:08 - Установка завершена.
+
+-----
+
+Количество неудавшихся установок: 0
+
+Процесс установки завершен в: 5 марта 2013 г. 17:34:08

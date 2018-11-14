@@ -1,22 +1,18 @@
 ﻿@model Notes.Models.LoginModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
     <div class="wrapper fadeInDown">
         <div id="formContent">
-            <!-- Tabs Titles -->
-            <!-- Icon -->
             <div class="fadeIn first">
                 <h2>Добро пожаловать</h2>
             </div>
-            <!-- Login Form -->
             <form>
                 <input type="text" id="Login" class="fadeIn second" name="login" placeholder="Login">
                 <input type="password" id="Password" class="fadeIn third" name="password" placeholder="Password">

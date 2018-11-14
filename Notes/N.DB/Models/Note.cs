@@ -1,5 +1,6 @@
 ﻿using N.DB.Models.Interfaces;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace N.DB.Models
 {
@@ -7,6 +8,7 @@ namespace N.DB.Models
     {
         public virtual long Id { get; set; }
 
+        [Required(ErrorMessage = "Enter name notes")]
         public virtual string Name { get; set; }
 
         public virtual string Content { get; set; }

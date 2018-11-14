@@ -1,12 +1,8 @@
 ﻿using N.DB.Models.Interfaces;
 using N.DB.Repository.Interfaces;
 using NHibernate;
-using NHibernate.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace N.NHibernate.Repository
 {
@@ -49,9 +45,11 @@ namespace N.NHibernate.Repository
         {
             ISession session = NHibernateHelper.GetCurrentSession();
 
-            using (session.BeginTransaction())
+            using (var tx = session.BeginTransaction())
             {
                 var user = session.Load<T>(id);
+
+                tx.Commit();
 
                 return user;
             }

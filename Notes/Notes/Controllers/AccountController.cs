@@ -1,10 +1,6 @@
 ﻿using N.DB.Repository.Interfaces;
 using N.NHibernate.Repository;
 using Notes.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -21,19 +17,27 @@ namespace Notes.Controllers
         {
             UserRepository = new NHUserRepository();
         }
-        
-        [AllowAnonymous]
-        public ActionResult Login()
-        {
-            return View();
-        }
 
+        /// <summary>
+        /// Get login view
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult Login() => View();
+
+        /// <summary>
+        /// Sign in
+        /// </summary>
+        /// <param name="model">Login model</param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(LoginModel model)
         {
             if (!ModelState.IsValid)
+            {
                 return View(model);
+            }
 
             var user = UserRepository.LoadByLogin(model.Login);
 
@@ -48,7 +52,11 @@ namespace Notes.Controllers
 
             return RedirectToAction("MyNotes", "Note");
         }
-        
+
+        /// <summary>
+        /// Sign out
+        /// </summary>
+        /// <returns>Login view</returns>
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();
@@ -56,12 +64,18 @@ namespace Notes.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        /// <summary>
+        /// Get registry view
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
-        public ActionResult Registry()
-        {
-            return View();
-        }
+        public ActionResult Registry() => View();
 
+        /// <summary>
+        /// Registry new user
+        /// </summary>
+        /// <param name="model">Login model</param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Registry(LoginModel model)
@@ -75,7 +89,7 @@ namespace Notes.Controllers
 
             if (user != null)
             {
-                ModelState.AddModelError("", "Пользователь с таким логином уже зарегистрирован");
+                ModelState.AddModelError("", "This user is exist");
 
                 return View(model);
             }
